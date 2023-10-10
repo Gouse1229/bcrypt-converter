@@ -1,0 +1,15 @@
+.myBody {
+    background-image: url('/images/theme.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#passwordContainer{
+    width: 400px;
+    text-align:center;
+    position: relative;
+    top: 40px;
+    margin: 10px auto;
+}
+#errorContainer{
+text-align:left
+}

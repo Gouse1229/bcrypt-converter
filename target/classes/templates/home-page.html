@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        BCrypt Password Encoder
+    </title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/css/myStyle.css}">
+    <script th:src="@{/js/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</head>
+<body class="myBody">
+    <p class="h1 text-center text-white mt-3">BCrypt Encoder</p>
+    <div id="passwordContainer">
+        <div class="alert alert-danger" role="alert"
+             id="errorContainer" style="display:none">
+            <span>Password should contain at least 1 character </span>
+        </div>
+        <span ></span>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control"
+                       name="password"
+                       placeholder="Enter password to encrypt"
+                       aria-label="Password to encrypt"
+                       aria-describedby="button-addon2"
+                        id="password" maxlength="50" />
+            <button class="btn btn-info"
+                    type="button" id="button-addon2"
+                    onclick="encryptPassword()">Encrypt</button>
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control"
+                   name="encryptedPassword"
+                   aria-label="Encrypted password"
+                   placeholder="Encrypted password will display here"
+                   aria-describedby="button-addon3"
+                   id="encryptedPassword" disabled/>
+            <button class="btn btn-secondary"
+                    type="button" id="button-addon3"
+                    onclick="copyPassWord()" ><i class="fa fa-copy"></i></button>
+        </div>
+    </div>
+
+    <script>
+
+        function encryptPassword(){
+        var password = jQuery("#password").val();
+            jQuery.ajax({
+                url:"getEncryptedPassword",
+                data: {
+                    "password": password
+                },
+                type:"GET"
+            }).done(function(data){
+                if(data === ""){
+                    $("#errorContainer").css("display","block");
+                }else{
+                    $("#encryptedPassword").val(data);
+                    $("#errorContainer").css("display","none");
+                }
+            });
+        }
+        function copyPassWord(){
+             var copyText = document.getElementById("encryptedPassword");
+             copyText.select();
+             copyText.setSelectionRange(0, 99999); // For mobile devices
+
+             navigator.clipboard.writeText(copyText.value);
+        }
+    </script>
+</body>
+
+</html>
