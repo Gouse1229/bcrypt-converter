@@ -1,7 +1,6 @@
-.myBody {
-    background-image: url('/images/theme.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+.myBody{
+    background-color:#BDC3C7;
+
 }
 #passwordContainer{
     width: 400px;
