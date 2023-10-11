@@ -62,9 +62,9 @@
                 if(data === ""){
                     $("#errorContainer").css("display","block");
                 }else{
-                    $("#encryptedPassword").val(data);
                     $("#errorContainer").css("display","none");
                 }
+                $("#encryptedPassword").val(data);
             });
         }
         function copyPassWord(){

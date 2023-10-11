@@ -1,0 +1,5 @@
+# Created at 2023-10-11T23:57:33.951
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Gouse Practice\my apps\bcrypt-converter\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
